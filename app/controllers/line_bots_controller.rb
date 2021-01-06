@@ -1,7 +1,9 @@
 class LineBotsController < ApplicationController
   before_action :validate_signature, only: :create
 
-  def create; end
+  def create
+    render json: { result: 'OK' }, status: :ok
+  end
 
   private
 
@@ -10,7 +12,7 @@ class LineBotsController < ApplicationController
     signature = request.env['HTTP_X_LINE_SIGNATURE']
     return if client.validate_signature(body, signature)
 
-    render json: { result: 'Bad Request' }, status: 400
+    render json: { result: 'Bad Request' }, status: :bad_request
   end
 
   def client
