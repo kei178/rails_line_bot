@@ -1,0 +1,90 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 2.4
+  DisplayCopNames: true
+  Exclude:
+    - 'bin/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    - 'config/environments/**/*'
+    - 'config/puma.rb'
+    - 'config/spring.rb'
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
+    - 'db/schema.rb'
+    - 'config/deploy/**/*'
+
+# Gem をアルファベット順にする
+Bundler/OrderedGems:
+  Enabled: false
+
+# Style・・・スタイルについての Cop
+# Lint ・・・誤りである可能性が高い部分や bad practice を指摘する Cop
+# Metrics・・クラスの行数や1行の文字数などに関しての Cop
+# Rails・・・Rails 特有の Cop
+
+# Style ##################################################
+
+# ASCII 文字のコメント (false で日本語コメントを許可)
+Style/AsciiComments:
+  Enabled: false
+
+# パブリックメソッドに documentation コメントを入れる
+Style/Documentation:
+  Enabled: false
+
+# 書式付き文字列の作成方法
+Style/FormatStringToken:
+  EnforcedStyle: template
+
+# ファイルの先頭に frozen_string_literal: true というコメントを入れる
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Metrics ##################################################
+
+# Assignment (変数への代入), Branch (メソッド呼び出し), Condition (条件文) の合計ポイント
+# http://hikitest.hatenablog.com/entry/2015/01/14/034346
+Metrics/AbcSize:
+  Max: 60
+
+# ブロックの長さ
+Metrics/BlockLength:
+  Enabled: false
+
+# クラスの長さ
+Metrics/ClassLength:
+  Max: 120
+
+# 循環的複雑度
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+# メソッドの長さ
+Metrics/MethodLength:
+  # Max: 20
+  Enabled: false
+
+# 分岐の数
+Metrics/PerceivedComplexity:
+  Max: 8
+
+# Layout ##################################################
+
+# 行の長さ
+Layout/LineLength:
+  IgnoredPatterns: ['\A\s*#']
+  Max: 120
+
+# ハッシュの配置
+Layout/HashAlignment:
+  EnforcedColonStyle: table
+
+# Rails ##################################################
+
+# Rails モード
+Rails:
+  Enabled: true
